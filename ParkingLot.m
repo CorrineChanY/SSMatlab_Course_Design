@@ -584,8 +584,8 @@ function [Cars, K] = initialization(Cars)
     global Tmax;
     k=1;
     while Cars(k).arrTime <= Tmax
-        deltaT = poissrnd(pArg);
-        Cars(k+1).arrTime = Cars(k).arrTime + deltaT; % 到达时间
+        deltaT = exprnd(pArg); % 到达时间服从泊松分布，可以推出到达时间间隔服从负指数分布，且参数一样。
+        Cars(k+1).arrTime = Cars(k).arrTime + deltaT;
         k = k + 1;
     end
 
